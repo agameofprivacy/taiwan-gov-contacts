@@ -1,0 +1,11 @@
+{
+  "name": "taiwan-gov-contacts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:agameofprivacy/taiwan-gov-contacts.git",
+  "author": "Eddie Chen <agameofprivacy@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "csv-parse": "^4.3.1"
+  }
+}
