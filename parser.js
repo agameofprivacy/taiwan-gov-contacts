@@ -80,7 +80,11 @@ function getParent(archiesDict){
       }
     } else {
       // ou.length > 1
-      return ou[ou.length - 2];
+      if (ou.length > 2 && (ou[ou.length - 2].charAt(ou[ou.length - 2].length -1) == "局" || ou[ou.length - 2].charAt(ou[ou.length - 2].length -1) == "處" || ou[ou.length - 2].charAt(ou[ou.length - 2].length -1) == "署")) {
+        return ou[ou.length - 3] + ou[ou.length - 2];
+      } else {
+        return ou[ou.length - 2];
+      }
     }
   } else {
     // no parent
