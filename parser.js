@@ -66,9 +66,17 @@ function getParent(archiesDict){
       }
     } else if (ou.length == 2){
       if (lString.length > 0) {
-        return lString + archiesDict["o"] + ou[ou.length - 2];
+        if (lString.charAt(lString.length - 1) == archiesDict["o"].charAt(0)){
+          return lString.slice(0, lString.length - 1) + archiesDict["o"] + ou[ou.length - 2];
+        } else {
+          return lString + archiesDict["o"] + ou[ou.length - 2];
+        }
       } else {
-        return archiesDict["o"] + ou[ou.length - 2];
+        if (ou[ou.length - 2].charAt(ou[ou.length - 2].length - 1) == "部") {
+          return ou[ou.length - 2];
+        } else {
+          return archiesDict["o"] + ou[ou.length - 2];
+        }
       }
     } else {
       // ou.length > 1
