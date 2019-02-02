@@ -79,8 +79,8 @@ function getParent(archiesDict){
         }
       }
     } else {
-      // ou.length > 1
-      if (ou.length > 2 && (ou[ou.length - 2].charAt(ou[ou.length - 2].length -1) == "局" || ou[ou.length - 2].charAt(ou[ou.length - 2].length -1) == "處" || ou[ou.length - 2].charAt(ou[ou.length - 2].length -1) == "署")) {
+      // ou.length > 2
+      if (ou[ou.length - 2].charAt(ou[ou.length - 2].length -1) == "局" || ou[ou.length - 2].charAt(ou[ou.length - 2].length -1) == "處" || ou[ou.length - 2].charAt(ou[ou.length - 2].length -1) == "署") {
         return ou[ou.length - 3] + ou[ou.length - 2];
       } else {
         return ou[ou.length - 2];
@@ -139,15 +139,19 @@ fs.createReadStream('./GDS.csv')
           unit["parent"] = getParent(archiesDict);
 
           var contact_details = [];
-          contact_details.push({
-            "type": "voice",
-            "label": "電話",
-            "value": csvrow[2]
-          });
-          contact_details.push({
-            "type": "address",
-            "value": csvrow[3]
-          })
+          if (csvrow[2].length > 0) {
+            contact_details.push({
+              "type": "voice",
+              "label": "電話",
+              "value": csvrow[2]
+            });
+          }
+          if (csvrow[3].length > 0) {
+            contact_details.push({
+              "type": "address",
+              "value": csvrow[3]
+            })
+          }
           unit["contact_details"] = contact_details;
           
           units.push(unit);
