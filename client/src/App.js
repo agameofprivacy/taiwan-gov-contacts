@@ -15,6 +15,27 @@ class App extends Component {
     var problemParents = [];
     var parentsWithEnding = [];
     var datas = [];
+
+    var idDict = {};
+
+    // create parent_id dictionary
+    units.forEach(function(unit){
+      idDict[unit.name] = {
+        scheme: unit.identifiers[0].scheme,
+        identifier: unit.identifiers[0].identifier
+      };
+    });
+
+    console.log(idDict)
+
+    // add parent_id {scheme:identifier};
+    units.forEach(function(unit){
+      if (unit.parent.length > 0) {
+        // parent exists, add parent_id
+        unit["parent_id"] = idDict[unit.parent];
+      }
+    });
+
     units.forEach(function(unit){
       names.push(unit.name);
       if (unit.parent.length > 0) {
